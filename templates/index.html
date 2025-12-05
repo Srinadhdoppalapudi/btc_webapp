@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitcoin Price Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<!-- ========================= NAVBAR ============================== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="/">BTC Predictor</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/history">📈 Price History</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/training">📊 Training Curve</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/analysis">📉 Analysis</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active fw-bold" href="/">🔮 Predict</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ========================= MAIN CONTAINER ============================== -->
+<div class="container mt-4">
+
+    <!-- Message -->
+    {% if message %}
+    <div class="alert alert-info text-center fw-bold shadow-sm">
+        {{ message }}
+    </div>
+    {% endif %}
+
+    <!-- ========================= PREDICTION CARD ============================== -->
+    <div class="card shadow-lg p-4 mb-4">
+
+        <h2 class="text-center mb-3">🔮 Predict Future Bitcoin Prices</h2>
+
+        <form action="/predict" method="post" class="row g-3 justify-content-center">
+
+            <div class="col-6 col-md-4">
+                <label class="form-label fw-bold">Enter Days (1 - 365):</label>
+                <input type="number" name="days" min="1" max="365" required
+                       class="form-control text-center fw-bold">
+            </div>
+
+            <div class="col-12 text-center">
+                <button class="btn btn-warning fw-bold px-4">Predict</button>
+            </div>
+
+        </form>
+
+        <!-- Prediction Output -->
+        {% if prediction %}
+        <hr>
+        <h4 class="text-center mt-3">Latest Predicted Price:</h4>
+        <p class="text-center display-6 text-success fw-bold">
+            {{ prediction }}
+        </p>
+
+        <div class="mt-4">
+            {{ graph | safe }}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- ========================= HISTORY GRAPH ============================== -->
+    {% if history_graph %}
+    <div class="card shadow-lg p-4 mb-4">
+        <h2 class="text-center">📈 Bitcoin Price History</h2>
+        {{ history_graph | safe }}
+    </div>
+    {% endif %}
+
+    <!-- ========================= TRAINING GRAPH ============================== -->
+    {% if training_graph %}
+    <div class="card shadow-lg p-4 mb-4">
+        <h2 class="text-center">📊 Training vs Validation Loss</h2>
+        {{ training_graph | safe }}
+    </div>
+    {% endif %}
+
+    <!-- ========================= ANALYSIS SECTION ============================== -->
+
+    {% if analysis_full %}
+    <div class="card shadow-lg p-4 mb-4">
+        <h2 class="text-center">📊 Full Bitcoin Price Analysis (2018–2025)</h2>
+        {{ analysis_full | safe }}
+    </div>
+    {% endif %}
+
+    {% if analysis_high_low %}
+    <div class="card shadow-lg p-4 mb-4">
+        <h2 class="text-center">📈 Month-wise High vs Low Price</h2>
+        {{ analysis_high_low | safe }}
+    </div>
+    {% endif %}
+
+    {% if analysis_open_close %}
+    <div class="card shadow-lg p-4 mb-4">
+        <h2 class="text-center">📉 Monthly Open vs Close Comparison</h2>
+        {{ analysis_open_close | safe }}
+    </div>
+    {% endif %}
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
