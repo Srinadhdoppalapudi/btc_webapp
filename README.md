@@ -62,38 +62,38 @@ Architecture Overview:
 
 5. Dense output layer with one neuron
 
-Training Configuration:
+## Training Configuration:
 
-Loss Function: Mean Squared Error (MSE)
+1. Loss Function: Mean Squared Error (MSE)
 
-Optimizer: Adam
+2. Optimizer: Adam
 
-Batch Size: 32
+3. Batch Size: 32
 
-Maximum Epochs: 200
+4. Maximum Epochs: 200
 
-Early stopping applied to prevent overfitting
+5. Early stopping applied to prevent overfitting
 
 
 ## 📈 Model Evaluation and Results
 
 The model was evaluated using both training and testing datasets. Performance was measured using:
 
-Root Mean Squared Error (RMSE)
+1. Root Mean Squared Error (RMSE)
 
-Mean Squared Error (MSE)
+2. Mean Squared Error (MSE)
 
-Mean Absolute Error (MAE)
+3. Mean Absolute Error (MAE)
 
 Explained Variance
 
 R² Score
 
-Key Testing Results
+## Key Testing Results
 
-R² Score: 0.9502
+1. R² Score: 0.9502
 
-Explained Variance: 0.9503
+2. Explained Variance: 0.9503
 
 These results indicate that the LSTM model explains over 95% of the variance in Bitcoin closing prices and generalizes well to unseen data.
 
@@ -113,11 +113,11 @@ Observations:
 
 The LSTM approach was compared with commonly used time-series forecasting techniques:
 
-Moving Average (MA)
+1. Moving Average (MA)
 
-Linear Regression Trend Model
+2. Linear Regression Trend Model
 
-ARIMA
+3. ARIMA
 
 Traditional models struggled with Bitcoin’s volatility and nonlinear patterns. The LSTM model significantly outperformed these methods due to its ability to learn long-term temporal dependencies and adapt to rapid market changes.
 
