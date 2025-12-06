@@ -33,17 +33,17 @@ Total Records Used: 1,539 daily observations
 
 ## Preprocessing Steps
 
-Selected only Date and Close price columns
+1. Selected only Date and Close price columns
 
-Cleaned column names and removed inconsistencies
+2. Cleaned column names and removed inconsistencies
 
-Converted dates to datetime format and sorted chronologically
+3. Converted dates to datetime format and sorted chronologically
 
-Scaled closing prices using MinMaxScaler
+4. Scaled closing prices using MinMaxScaler
 
-Created 60-day sliding window sequences for supervised learning
+5. Created 60-day sliding window sequences for supervised learning
 
-Split data into 80% training and 20% testing sets
+6. Split data into 80% training and 20% testing sets
 
 
 ## 🧠 Model Architecture
@@ -52,15 +52,15 @@ The forecasting model is a Long Short-Term Memory (LSTM) neural network designed
 
 Architecture Overview:
 
-Input layer with shape (60 time steps, 1 feature)
+1. Input layer with shape (60 time steps, 1 feature)
 
-First LSTM layer (50 units, returns sequences)
+2. First LSTM layer (50 units, returns sequences)
 
-Dropout layer (rate = 0.2)
+3. Dropout layer (rate = 0.2)
 
-Second LSTM layer (30 units)
+4. Second LSTM layer (30 units)
 
-Dense output layer with one neuron
+5. Dense output layer with one neuron
 
 Training Configuration:
 
@@ -103,11 +103,11 @@ After evaluation, the trained LSTM model was used to generate a 90-day future fo
 
 Observations:
 
-Forecast trends are smooth and stable
+1. Forecast trends are smooth and stable
 
-No unrealistic spikes are observed
+2. No unrealistic spikes are observed
 
-Predictions align with recent market behavior
+3. Predictions align with recent market behavior
 
 ## 🔍 Comparison with Traditional Methods
 
@@ -123,16 +123,16 @@ Traditional models struggled with Bitcoin’s volatility and nonlinear patterns.
 
 ## 🛠️ Technology Stack
 
-Programming Language: Python
+1. Programming Language: Python
 
-Web Framework: Flask
+2. Web Framework: Flask
 
-Deep Learning Library: TensorFlow / Keras
+3. Deep Learning Library: TensorFlow / Keras
 
-Data Processing: NumPy, Pandas
+4. Data Processing: NumPy, Pandas
 
-Scaling: scikit-learn (MinMaxScaler)
+5. Scaling: scikit-learn (MinMaxScaler)
 
-Visualization: Plotly, Matplotlib
+6. Visualization: Plotly, Matplotlib
 
-Deployment Platform: Railway
+7. Deployment Platform: Railway
